@@ -46,6 +46,7 @@ else:
     kwargs['cmdclass'] = {'build_ext': build_ext}
     kwargs['ext_modules'] = [
             Extension("_heapdict", ["_heapdict.py"]),
+            Extension("cheapdict", ["cheapdict.pyx"]),
             ]
 
 setup(**kwargs)

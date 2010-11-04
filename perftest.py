@@ -40,3 +40,7 @@ def _timeit(package_name):
 
 t_python = _timeit('heapdict')
 print 'python = %f' % t_python
+if os.path.exists('cheapdict.so'):
+    t_cython = _timeit('cheapdict')
+    print 'cython = %f' % t_cython
+    print 'cy/py  = %.2f%%' % float(t_cython / t_python * 100)
