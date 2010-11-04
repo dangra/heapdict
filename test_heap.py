@@ -11,12 +11,15 @@ except ImportError:
 
 N = 100
 
+def _parent(i):
+    return ((i - 1) >> 1)
+
 class TestHeap(unittest.TestCase):
     def check_invariants(self, h):
         for i in range(len(h)):
             self.assertEqual(h.heap[i][2], i)
             if i > 0:
-                self.assertTrue(h.heap[h._parent(i)][0] <= h.heap[i][0])
+                self.assertTrue(h.heap[_parent(i)][0] <= h.heap[i][0])
 
     def make_data(self):
         pairs = [(random.random(), random.random()) for i in range(N)]

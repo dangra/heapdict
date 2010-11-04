@@ -8,7 +8,8 @@ if sys.version_info[0] <= 2:
 else:
     from distutils.core import setup, Extension
 
-setup(name='HeapDict',
+
+kwargs = dict(name='HeapDict',
       version='1.0.0',
       description='a heap with decrease-key and increase-key operations',
       author='Stutzbach Enterprises, LLC',
@@ -35,5 +36,16 @@ setup(name='HeapDict',
           ],
 
       long_description=open('README.rst').read(),
-            
       )
+
+try:
+    from Cython.Distutils import build_ext
+except ImportError:
+    pass
+else:
+    kwargs['cmdclass'] = {'build_ext': build_ext}
+    kwargs['ext_modules'] = [
+            Extension("_heapdict", ["_heapdict.py"]),
+            ]
+
+setup(**kwargs)

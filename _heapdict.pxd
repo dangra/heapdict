@@ -1,0 +1,10 @@
+cdef int _parent(int i)
+cdef int _left(int i)
+cdef int _right(int i)
+cdef void _min_heapify(list heap, int i)
+cdef void _swap(list heap, int i, int j)
+cdef void _decrease_key(list heap, int i)
+
+cpdef heap_reheapify(list heap, list wrapper)
+cpdef heap_popitem(list heap)
+cpdef heap_append_and_decrease(list heap, list wrapper)
